@@ -1,0 +1,94 @@
+/paper/CVE-2023-0804	/paper/libtiff	tools/tiffcrop	-E right  -z 1,1,2048,2048:1,2049,2048,4097 -i -s @@ /tmp/foo
+/paper/CVE-2023-1916	/paper/libtiff	tools/tiffcrop	-R 270 -S 8:4 -O landscape -E b -e divided -F hor -w 10 -U cm -m 1,2,3,4 -i @@ /tmp/foo
+/paper/CVE-2023-0799	/paper/libtiff	tools/tiffcrop	-e multiple  -z 1,1,2048,2048:1,2049,2048,4097 -R 270 -i @@ /tmp/foo
+/paper/CVE-2022-4645	/paper/libtiff	tools/tiffcp	@@ /tmp/foo
+/paper/CVE-2022-3627	/paper/libtiff	tools/tiffcrop	-X 1 -Y 2 -R 180 -H 300 -V 300 -i @@ /tmp/foo
+/paper/CVE-2022-3599	/paper/libtiff	tools/tiffcrop	-H 341 @@ /tmp/foo
+/paper/CVE-2022-3598	/paper/libtiff	tools/tiffcrop	-Z 1:4,3:3 @@ /tmp/foo
+/paper/CVE-2022-3597	/paper/libtiff	tools/tiffcrop	-Z 1:4,3:3 -R 90 -H 300 -i @@ /tmp/foo
+/paper/CVE-2022-2953	/paper/libtiff	tools/tiffcrop	-Z 1:4,3:3 -R 90 -H 300  -S 2:2  -i @@ /tmp/foo
+/paper/CVE-2022-1623	/paper/libtiff	tools/tiffcp	-i @@ /tmp/foo
+/paper/CVE-2022-1354	/paper/libtiff	tools/tiffinfo	-D -i  -r @@
+/paper/CVE-2022-1056	/paper/libtiff	tools/tiffcrop	-H 341 @@ /tmp/foo
+/paper/CVE-2022-0924	/paper/libtiff	tools/tiffcp	-i -s -p separate @@ /tmp/foo
+/paper/CVE-2022-0907	/paper/libtiff	tools/tiffcrop	-H 341 @@ /tmp/foo	
+/paper/CVE-2020-19144	/paper/libtiff	tools/tiffcp	-i @@ /dev/null
+/paper/CVE-2020-19143	/paper/libtiff	tools/tiffcp	-i @@ /dev/null
+/paper/CVE-2020-19131	/paper/libtiff	tools/tiffcrop	-I data	@@ out.tiff
+/paper/CVE-2020-18768	/paper/libtiff	tools/tiffcp	-i @@ /tmp/foo
+/paper/CVE-2019-7663	/paper/libtiff	tools/tiffcp	-i @@ /tmp/foo
+/paper/CVE-2023-25435	/paper/libtiff	tools/tiffcrop	-E l -Z 12:50,12:99 -e divided  -R 270 @@ /dev/null
+/paper/CVE-2023-30775	/paper/libtiff	tools/tiffcrop	-i @@ /dev/null
+/paper/CVE-2023-30083	/paper/libming	util/swftophp	@@	
+/paper/CVE-2023-30084	/paper/libming	util/swftophp	@@	
+/paper/CVE-2021-34342	/paper/libming	util/swftophp	@@	
+/paper/CVE-2021-34341	/paper/libming	util/swftophp	@@	
+/paper/CVE-2021-34339	/paper/libming	util/swftophp	@@	
+/paper/CVE-2021-34338	/paper/libming	util/swftophp	@@	
+/paper/CVE-2020-6629	/paper/libming	util/swftophp	@@	
+/paper/CVE-2020-11895	/paper/libming	util/swftocxx	@@
+/paper/CVE-2018-9132	/paper/libming	util/swftophp	@@	
+/paper/CVE-2018-8964	/paper/libming	util/swftophp	@@
+/paper/CVE-2018-7875	/paper/libming	util/swftocxx	@@ /dev/null
+/paper/CVE-2018-20591	/paper/libming	util/swftocxx	@@ /dev/null		
+/paper/CVE-2021-4241	/paper/libpng	pngimage	@@
+/paper/CVE-2023-36243	/paper/flvmeta	src/flvmeta	@@	
+/paper/CVE-2019-16165	/paper/cflow-1.6	src/cflow	@@	
+/paper/CVE-2019-16166	/paper/cflow-1.6	src/cflow	@@	
+/paper/CVE-2022-31783	/paper/liblouis	tools/lou_trace	@@	
+/paper/CVE-2022-26981	/paper/liblouis	tools/lou_checktable	@@	
+/paper/CVE-2023-31974	/paper/yasm	yasm	-w -W -M @@
+/paper/CVE-2023-31725	/paper/yasm	yasm	@@
+/paper/CVE-2023-31723	/paper/yasm	yasm	@@
+/paper/CVE-2023-31724	/paper/yasm	yasm	@@
+/paper/CVE-2023-29582	/paper/yasm	yasm	@@	
+/paper/CVE-2021-33468	/paper/yasm	yasm	@@
+/paper/CVE-2021-33467	/paper/yasm	yasm	@@
+/paper/CVE-2021-33466	/paper/yasm	yasm	@@
+/paper/CVE-2021-33465	/paper/yasm	yasm	@@
+/paper/CVE-2021-33464	/paper/yasm	yasm	@@
+/paper/CVE-2021-33463	/paper/yasm	yasm	@@
+/paper/CVE-2021-33462	/paper/yasm	yasm	@@
+/paper/CVE-2022-47673	/paper/binutils	binutils/addr2line	-e @@ 0
+/paper/CVE-2022-45703	/paper/binutils	binutils/readelf	-w @@
+/paper/CVE-2022-44840	/paper/binutils	binutils/readelf	-w @@
+/paper/CVE-2022-4285	/paper/binutils	binutils/nm-new	-aD @@
+/paper/CVE-2022-38533	/paper/binutils	binutils/strip-new	-o out_file @@
+/paper/CVE-2022-35206	/paper/binutils	binutils/readelf	-w @@
+/paper/CVE-2021-46174	/paper/binutils	binutils/objdump	-g @@
+/paper/CVE-2021-45078	/paper/binutils	binutils/objdump	-g @@
+/paper/CVE-2021-20284	/paper/binutils	binutils/nm-new	--synthetic @@
+/paper/CVE-2020-35493	/paper/binutils	binutils/objdump	-x @@
+/paper/CVE-2020-35448	/paper/binutils	binutils/objdump	-d @@
+/paper/CVE-2020-16591	/paper/binutils	binutils/readelf	-a @@
+/paper/issue-881	/paper/libredwg	programs/dwg2dxf	@@
+/paper/CVE-2018-17795	/paper/libtiff	tools/tiff2pdf	@@ -o /dev/null
+/paper/CVE-2018-12900	/paper/libtiff	tools/tiffcp	-i @@ /dev/null
+/paper/CVE-2018-8905	/paper/libtiff	tools/tiffcp	-i @@ /dev/null
+/paper/CVE-2020-11894	/paper/libming	util/swftocxx	@@
+/paper/CVE-2020-6628	/paper/libming	util/swftopython	@@
+/paper/CVE-2019-16705	/paper/libming	util/swftocxx	@@
+/paper/CVE-2019-9114	/paper/libming	util/swftocxx	@@
+/paper/CVE-2018-9009	/paper/libming	util/swftopython	@@
+/paper/CVE-2018-7871	/paper/libming	util/swftocxx	@@ /dev/null	
+/paper/CVE-2021-20294	/paper/binutils	binutils/readelf	--dyn-syms @@
+/paper/CVE-2020-16592	/paper/binutils	binutils/nm-new	-C @@
+/paper/CVE-2019-20094	/paper/libsixel	converters/img2sixel	-I @@
+/paper/CVE-2019-20024	/paper/libsixel	converters/img2sixel	@@
+/paper/CVE-2021-26926	/paper/jasper	Build/src/appl/jasper	-f @@ --output-format jpg
+/paper/CVE-2021-3272	/paper/jasper	Build/src/appl/jasper	--input @@ --output test.jp2
+/paper/CVE-2020-27828	/paper/jasper	Build/src/appl/jasper	--input @@ --output /dev/null --output-format jpc -O numrlvls=40
+/paper/CVE-2018-19543	/paper/jasper	Build/src/appl/jasper	--input @@ --input-format jp2 --output /dev/null --output-format bmp
+/paper/CVE-2018-19540	/paper/jasper	Build/src/appl/jasper	--input @@ --input-format jp2 --output /dev/null --output-format bmp
+/paper/CVE-2021-3246	/paper/libsndfile	programs/sndfile-info	--cart @@
+/paper/CVE-2020-24241	/paper/nasm	nasm	-f win64 -o tmp.o @@
+/paper/CVE-2020-21676	/paper/fig2dev	fig2dev/fig2dev	-L pstricks @@
+/paper/CVE-2020-21675	/paper/fig2dev	fig2dev/fig2dev	-L ptk @@
+/paper/issue-278	/paper/libtiff	tools/tiffcp	-i -s -p separate @@ /dev/null
+/paper/issue-277	/paper/libtiff	tools/tiffcp	@@ /dev/null
+/paper/issue-275	/paper/libtiff	tools/tiffcrop	-i @@ /dev/null
+/paper/issue-269	/paper/libtiff	tools/tiffcrop	-i @@ /dev/null
+/paper/CVE-2016-10272	/paper/libtiff	tools/tiffcrop	-i @@ /dev/null
+/paper/CVE-2016-10092	/paper/libtiff	tools/tiffcrop	-i @@ /dev/null
+/paper/CVE-2016-9273	/paper/libtiff	tools/tiffsplit	@@
+/paper/CVE-2016-9532	/paper/libtiff	tools/tiffcrop	@@ test

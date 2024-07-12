@@ -1,0 +1,244 @@
+#!/usr/bin/env python3
+
+"""
+datAFLow clang driver.
+
+Author: Adrian Herrera
+"""
+
+
+from argparse import ArgumentParser
+from itertools import chain
+from pathlib import Path
+from shutil import which
+from subprocess import run
+import os
+import sys
+
+
+THIS_FILE = Path(__file__).name
+THIS_DIR = Path(__file__).parent.resolve()
+LIB_DIR = Path(THIS_DIR.parent) / 'lib'
+
+
+def parse_args():
+    """Parse command-line options."""
+    parser = ArgumentParser(description='datAFLow C compiler')
+    parser.add_argument('--inst', choices=('none', 'afl', 'tracer'),
+                        help='def/use site instrumentation type')
+
+    # def site options
+    def_arg_group = parser.add_argument_group('def sites', 'Def site options')
+    def_arg_group.add_argument('--def-mem-funcs', type=Path, metavar='TXT',
+                               help='LLVM special case list of custom memory '
+                               'allocation functions')
+    def_arg_group.add_argument('--def-ignore-dyn-mem', action='store_true',
+                                default=False,
+                                help='Ignore dynamic memory allocation routines')
+    def_arg_group.add_argument('--def-sensitivity', default=[], action='append',
+                               choices=('array', 'struct', 'pointer'),
+                               help='def site sensitivity')
+
+    
+    # Use site options
+    use_arg_group = parser.add_argument_group('use sites', 'Use site options')
+    use_arg_group.add_argument('--use-sensitivity', default=[], action='append',
+                               choices=('read', 'write'),
+                               help='use site sensitivity')
+    use_arg_group.add_argument('--use-capture',
+                                choices=('use', 'offset', 'value'),
+                                help='what to capture at the use site')
+    
+    return parser.parse_known_args()
+
+
+def check_if_assembler(args):
+    """Return `True` if the input file is an assembly file."""
+    for arg in args:
+        p = Path(arg)
+        if p.exists():
+            ext = p.suffix.lower()
+            if ext == '.s':
+                return True
+
+    return False
+
+
+def can_lto():
+    return which('ld.gold') is not None
+
+
+def get_llvm_args(args):
+    env = os.environ.copy()
+    llvm_args = []
+
+    # Def site function ignore list
+    if 'FUZZALLOC_DEF_FUNC_IGNORE' in env:
+        func_ignore = env['FUZZALLOC_DEF_FUNC_IGNORE']
+    else:
+        func_ignore = None
+
+    if func_ignore:
+        llvm_args.extend(['-mllvm',
+                          f'-fuzzalloc-def-ignore-funcs={func_ignore}'])
+
+    # Def site dynamic memory allocation functions
+    if 'FUZZALLOC_DEF_MEM_FUNCS' in env:
+        def_mem_funcs = env['FUZZALLOC_DEF_MEM_FUNCS']
+    elif args.def_mem_funcs:
+        def_mem_funcs = args.def_mem_funcs
+    else:
+        def_mem_funcs = None
+
+    if def_mem_funcs:
+        llvm_args.extend(['-mllvm',
+                          f'-fuzzalloc-custom-mem-funcs={def_mem_funcs}'])
+
+    # Def site sensitivity
+    if 'FUZZALLOC_DEF_SENSITIVITY' in env:
+        def_iter = (['-mllvm', f'-fuzzalloc-def-{def_sensitivity}'] for
+                    def_sensitivity in
+                    env['FUZZALLOC_DEF_SENSITIVITY'].split(':'))
+        def_sensitivities = chain.from_iterable(def_iter)
+    elif args.def_sensitivity:
+        def_iter = (['-mllvm', f'-fuzzalloc-def-{def_sensitivity}'] for
+                    def_sensitivity in args.def_sensitivity)
+        def_sensitivities = chain.from_iterable(def_iter)
+    else:
+        def_sensitivities = []
+
+    llvm_args.extend(def_sensitivities)
+
+    
+    # Use site sensitivity
+    if 'FUZZALLOC_USE_SENSITIVITY' in env:
+        use_iter = (['-mllvm', f'-fuzzalloc-use-{use_sensitivity}'] for
+                use_sensitivity in env['FUZZALLOC_USE_SENSITIVITY'].split(':'))
+        use_sensitivities = chain.from_iterable(use_iter)
+    elif args.use_sensitivity:
+        use_iter = (['-mllvm', f'-fuzzalloc-use-{use_sensitivity}'] for
+                use_sensitivity in args.use_sensitivity)
+        use_sensitivities = chain.from_iterable(use_iter)
+    else:
+        use_sensitivities = []
+
+    llvm_args.extend(use_sensitivities)
+
+    # Use site capture
+    if 'FUZZALLOC_USE_CAPTURE' in env:
+        use_capture = env['FUZZALLOC_USE_CAPTURE']
+    elif args.use_capture:
+        use_capture = args.use_capture
+    else:
+        use_capture = None
+
+    if use_capture:
+        llvm_args.extend(['-mllvm', f'-fuzzalloc-capture-{use_capture}'])
+    
+
+    # Instrumentation
+    if 'FUZZALLOC_INST' in env:
+        inst = env['FUZZALLOC_INST']
+    elif args.inst:
+        inst = args.inst
+    else:
+        inst = None
+
+    if inst:
+        llvm_args.extend(['-mllvm', f'-fuzzalloc-inst-{inst}'])
+
+    return llvm_args
+
+
+def main():
+    """The main function."""
+    args, clang_args = parse_args()
+    env = os.environ.copy()
+
+    if THIS_FILE.endswith('c++'):
+        cmd = [Path('@LLVM_TOOLS_BINARY_DIR@', 'clang++')]
+    else:
+        cmd = [Path('@LLVM_TOOLS_BINARY_DIR@', 'clang')]
+
+    cmd.extend([
+        '-g', '-fno-discard-value-names',
+        '-Xclang', '-load', '-Xclang', f'{LIB_DIR}/Analysis/libVariableRecovery.so',
+        '-Xclang', '-load', '-Xclang', f'{LIB_DIR}/Analysis/libMemFuncIdentify.so',
+        '-Xclang', '-load', '-Xclang', f'{LIB_DIR}/Analysis/libDefSiteIdentify.so',
+        '-Xclang', '-load', '-Xclang', f'{LIB_DIR}/Analysis/libUseSiteIdentify.so',
+        '-Xclang', '-load', '-Xclang', f'{LIB_DIR}/Transforms/Instrumentation/libGlobalVariableTag.so',
+        '-Xclang', '-load', '-Xclang', f'{LIB_DIR}/Transforms/Instrumentation/libLocalVariableTag.so',
+    ])
+
+    '''
+    cmd.extend([
+        '-g', '-fno-discard-value-names',
+
+        '-Xclang', '-load', '-Xclang', f'{LIB_DIR}/libMem2Reg.so',
+
+        '-Xclang', '-load', '-Xclang', f'{LIB_DIR}/libLowerDebugDeclare.so',
+        '-Xclang', '-load', '-Xclang', f'{LIB_DIR}/libLowerAtomic.so',
+        '-Xclang', '-load', '-Xclang', f'{LIB_DIR}/libLowerMemIntrinsic.so',
+        '-Xclang', '-load', '-Xclang', f'{LIB_DIR}/libLowerNewDelete.so',
+        '-Xclang', '-load', '-Xclang', f'{LIB_DIR}/libLowerConstantExpr.so',
+        '-Xclang', '-load', '-Xclang', f'{LIB_DIR}/libStripLifetime.so',
+
+        '-Xclang', '-load', '-Xclang', f'{LIB_DIR}/libVariableRecovery.so',
+        '-Xclang', '-load', '-Xclang', f'{LIB_DIR}/libMemFuncIdentify.so',
+        '-Xclang', '-load', '-Xclang', f'{LIB_DIR}/libDefSiteIdentify.so',
+        '-Xclang', '-load', '-Xclang', f'{LIB_DIR}/libUseSiteIdentify.so',
+
+        '-Xclang', '-load', '-Xclang', f'{LIB_DIR}/libGlobalVariableTag.so',
+        '-Xclang', '-load', '-Xclang', f'{LIB_DIR}/libLocalVariableTag.so',
+    ])
+    '''
+
+    # Def ignore dynamic memory allocations
+    if 'FUZZALLOC_DEF_IGNORE_DYN_MEM' in env:
+        def_ignore_dyn_mem = True
+    elif args.def_ignore_dyn_mem:
+        def_ignore_dyn_mem = True
+    else:
+        def_ignore_dyn_mem = False
+
+    if not def_ignore_dyn_mem:
+        cmd.extend(['-Xclang', '-load', '-Xclang', f'{LIB_DIR}/Transforms/Instrumentation/libHeapTag.so'])
+
+    is_assembler = check_if_assembler(clang_args)
+    if not is_assembler:
+        llvm_args = get_llvm_args(args)
+        cmd.extend(llvm_args)
+
+    cmd.extend(['-Xclang', '-load', '-Xclang', f'{LIB_DIR}/Transforms/Instrumentation/libUseSite.so'])
+#    if can_lto():
+#        cmd.extend(['-fuse-ld=gold', '-flto'])
+
+    # Clang args
+    cmd.extend(clang_args)
+
+    # Instrumentation
+    if 'FUZZALLOC_INST' in env:
+        inst = env['FUZZALLOC_INST']
+    elif args.inst:
+        inst = args.inst
+    else:
+        inst = None
+
+    # Linker args
+    if inst == 'afl':
+        cmd.extend(['-O3',
+                    f'-L{LIB_DIR}', '-lFuzzallocRuntime', '-lAFLRuntime',
+                    '@LLVM_PTHREAD_LIB@'])
+    elif inst == 'tracer':
+        cmd.extend([f'-L{LIB_DIR}', '-lTracerRuntime', '-lstdc++',
+                    '-L@LLVM_LIBRARY_DIR@', '-lLLVMSupport',
+                    '@LLVM_PTHREAD_LIB@', '-lm', '-ltinfo'])
+
+    cmd.append('-Qunused-arguments')
+
+    proc = run(cmd, check=False)
+    return proc.returncode
+
+
+if __name__ == '__main__':
+    sys.exit(main())

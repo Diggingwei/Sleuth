@@ -1,0 +1,94 @@
+/src/project/libtiff_project/CVE-2023-0804	/src/project/libtiff_project/libtiff	tools/tiffcrop	-E right  -z 1,1,2048,2048:1,2049,2048,4097 -i -s @@ /tmp/foo
+/src/project/libtiff_project/CVE-2023-1916	/src/project/libtiff_project/libtiff	tools/tiffcrop	-R 270 -S 8:4 -O landscape -E b -e divided -F hor -w 10 -U cm -m 1,2,3,4 -i @@ /tmp/foo
+/src/project/libtiff_project/CVE-2023-0799	/src/project/libtiff_project/libtiff	tools/tiffcrop	-e multiple  -z 1,1,2048,2048:1,2049,2048,4097 -R 270 -i @@ /tmp/foo
+/src/project/libtiff_project/CVE-2022-4645	/src/project/libtiff_project/libtiff	tools/tiffcp	@@ /tmp/foo
+/src/project/libtiff_project/CVE-2022-3627	/src/project/libtiff_project/libtiff	tools/tiffcrop	-X 1 -Y 2 -R 180 -H 300 -V 300 -i @@ /tmp/foo
+/src/project/libtiff_project/CVE-2022-3599	/src/project/libtiff_project/libtiff	tools/tiffcrop	-H 341 @@ /tmp/foo
+/src/project/libtiff_project/CVE-2022-3598	/src/project/libtiff_project/libtiff	tools/tiffcrop	-Z 1:4,3:3 @@ /tmp/foo
+/src/project/libtiff_project/CVE-2022-3597	/src/project/libtiff_project/libtiff	tools/tiffcrop	-Z 1:4,3:3 -R 90 -H 300 -i @@ /tmp/foo
+/src/project/libtiff_project/CVE-2022-2953	/src/project/libtiff_project/libtiff	tools/tiffcrop	-Z 1:4,3:3 -R 90 -H 300  -S 2:2  -i @@ /tmp/foo
+/src/project/libtiff_project/CVE-2022-1623	/src/project/libtiff_project/libtiff	tools/tiffcp	-i @@ /tmp/foo
+/src/project/libtiff_project/CVE-2022-1354	/src/project/libtiff_project/libtiff	tools/tiffinfo	-D -i  -r @@
+/src/project/libtiff_project/CVE-2022-1056	/src/project/libtiff_project/libtiff	tools/tiffcrop	-H 341 @@ /tmp/foo
+/src/project/libtiff_project/CVE-2022-0924	/src/project/libtiff_project/libtiff	tools/tiffcp	-i -s -p separate @@ /tmp/foo
+/src/project/libtiff_project/CVE-2022-0907	/src/project/libtiff_project/libtiff	tools/tiffcrop	-H 341 @@ /tmp/foo	
+/src/project/libtiff_project/CVE-2020-19144	/src/project/libtiff_project/libtiff	tools/tiffcp	-i @@ /dev/null
+/src/project/libtiff_project/CVE-2020-19143	/src/project/libtiff_project/libtiff	tools/tiffcp	-i @@ /dev/null
+/src/project/libtiff_project/CVE-2020-19131	/src/project/libtiff_project/libtiff	tools/tiffcrop	-I data	@@ out.tiff
+/src/project/libtiff_project/CVE-2020-18768	/src/project/libtiff_project/libtiff	tools/tiffcp	-i @@ /tmp/foo
+/src/project/libtiff_project/CVE-2019-7663	/src/project/libtiff_project/libtiff	tools/tiffcp	-i @@ /tmp/foo
+/src/project/libtiff_project/CVE-2023-25435	/src/project/libtiff_project/libtiff	tools/tiffcrop	-E l -Z 12:50,12:99 -e divided  -R 270 @@ /dev/null
+/src/project/libtiff_project/CVE-2023-30775	/src/project/libtiff_project/libtiff	tools/tiffcrop	-i @@ /dev/null
+/src/project/libming_project/CVE-2023-30083	/src/project/libming_project/libming	util/swftophp	@@	
+/src/project/libming_project/CVE-2023-30084	/src/project/libming_project/libming	util/swftophp	@@	
+/src/project/libming_project/CVE-2021-34342	/src/project/libming_project/libming	util/swftophp	@@	
+/src/project/libming_project/CVE-2021-34341	/src/project/libming_project/libming	util/swftophp	@@	
+/src/project/libming_project/CVE-2021-34339	/src/project/libming_project/libming	util/swftophp	@@	
+/src/project/libming_project/CVE-2021-34338	/src/project/libming_project/libming	util/swftophp	@@	
+/src/project/libming_project/CVE-2020-6629	/src/project/libming_project/libming	util/swftophp	@@	
+/src/project/libming_project/CVE-2020-11895	/src/project/libming_project/libming	util/swftocxx	@@
+/src/project/libming_project/CVE-2018-9132	/src/project/libming_project/libming	util/swftophp	@@	
+/src/project/libming_project/CVE-2018-8964	/src/project/libming_project/libming	util/swftophp	@@
+/src/project/libming_project/CVE-2018-7875	/src/project/libming_project/libming	util/swftocxx	@@ /dev/null
+/src/project/libming_project/CVE-2018-20591	/src/project/libming_project/libming	util/swftocxx	@@ /dev/null		
+/src/project/libpng_project/CVE-2021-4241	/src/project/libpng_project/libpng	pngimage	@@
+/src/project/flvmeta_project/CVE-2023-36243	/src/project/flvmeta_project/flvmeta	src/flvmeta	@@	
+/src/project/cflow_project/CVE-2019-16165	/src/project/cflow_project/cflow-1.6	src/cflow	@@	
+/src/project/cflow_project/CVE-2019-16166	/src/project/cflow_project/cflow-1.6	src/cflow	@@	
+/src/project/liblouis_project/CVE-2022-31783	/src/project/liblouis_project/liblouis	tools/lou_trace	@@	
+/src/project/liblouis_project/CVE-2022-26981	/src/project/liblouis_project/liblouis	tools/lou_checktable	@@	
+/src/project/yasm_project/CVE-2023-31974	/src/project/yasm_project/yasm	yasm	-w -W -M @@
+/src/project/yasm_project/CVE-2023-31725	/src/project/yasm_project/yasm	yasm	@@
+/src/project/yasm_project/CVE-2023-31723	/src/project/yasm_project/yasm	yasm	@@
+/src/project/yasm_project/CVE-2023-31724	/src/project/yasm_project/yasm	yasm	@@
+/src/project/yasm_project/CVE-2023-29582	/src/project/yasm_project/yasm	yasm	@@	
+/src/project/yasm_project/CVE-2021-33468	/src/project/yasm_project/yasm	yasm	@@
+/src/project/yasm_project/CVE-2021-33467	/src/project/yasm_project/yasm	yasm	@@
+/src/project/yasm_project/CVE-2021-33466	/src/project/yasm_project/yasm	yasm	@@
+/src/project/yasm_project/CVE-2021-33465	/src/project/yasm_project/yasm	yasm	@@
+/src/project/yasm_project/CVE-2021-33464	/src/project/yasm_project/yasm	yasm	@@
+/src/project/yasm_project/CVE-2021-33463	/src/project/yasm_project/yasm	yasm	@@
+/src/project/yasm_project/CVE-2021-33462	/src/project/yasm_project/yasm	yasm	@@
+/src/project/binutils_project/CVE-2022-47673	/src/project/binutils_project/binutils	binutils/addr2line	-e @@ 0
+/src/project/binutils_project/CVE-2022-45703	/src/project/binutils_project/binutils	binutils/readelf	-w @@
+/src/project/binutils_project/CVE-2022-44840	/src/project/binutils_project/binutils	binutils/readelf	-w @@
+/src/project/binutils_project/CVE-2022-4285	/src/project/binutils_project/binutils	binutils/nm-new	-aD @@
+/src/project/binutils_project/CVE-2022-38533	/src/project/binutils_project/binutils	binutils/strip-new	-o out_file @@
+/src/project/binutils_project/CVE-2022-35206	/src/project/binutils_project/binutils	binutils/readelf	-w @@
+/src/project/binutils_project/CVE-2021-46174	/src/project/binutils_project/binutils	binutils/objdump	-g @@
+/src/project/binutils_project/CVE-2021-45078	/src/project/binutils_project/binutils	binutils/objdump	-g @@
+/src/project/binutils_project/CVE-2021-20284	/src/project/binutils_project/binutils	binutils/nm-new	--synthetic @@
+/src/project/binutils_project/CVE-2020-35493	/src/project/binutils_project/binutils	binutils/objdump	-x @@
+/src/project/binutils_project/CVE-2020-35448	/src/project/binutils_project/binutils	binutils/objdump	-d @@
+/src/project/binutils_project/CVE-2020-16591	/src/project/binutils_project/binutils	binutils/readelf	-a @@
+/src/project/libredwg_project/issue-881	/src/project/libredwg_project/libredwg	programs/dwg2dxf	@@
+/src/project/libtiff_project/CVE-2018-17795	/src/project/libtiff_project/libtiff	tools/tiff2pdf	@@ -o /dev/null
+/src/project/libtiff_project/CVE-2018-12900	/src/project/libtiff_project/libtiff	tools/tiffcp	-i @@ /dev/null
+/src/project/libtiff_project/CVE-2018-8905	/src/project/libtiff_project/libtiff	tools/tiffcp	-i @@ /dev/null
+/src/project/libming_project/CVE-2020-11894	/src/project/libming_project/libming	util/swftocxx	@@
+/src/project/libming_project/CVE-2020-6628	/src/project/libming_project/libming	util/swftopython	@@
+/src/project/libming_project/CVE-2019-16705	/src/project/libming_project/libming	util/swftocxx	@@
+/src/project/libming_project/CVE-2019-9114	/src/project/libming_project/libming	util/swftocxx	@@
+/src/project/libming_project/CVE-2018-9009	/src/project/libming_project/libming	util/swftopython	@@
+/src/project/libming_project/CVE-2018-7871	/src/project/libming_project/libming	util/swftocxx	@@ /dev/null	
+/src/project/binutils_project/CVE-2021-20294	/src/project/binutils_project/binutils	binutils/readelf	--dyn-syms @@
+/src/project/binutils_project/CVE-2020-16592	/src/project/binutils_project/binutils	binutils/nm-new	-C @@
+/src/project/libsixel_project/CVE-2019-20094	/src/project/libsixel_project/libsixel	converters/img2sixel	-I @@
+/src/project/libsixel_project/CVE-2019-20024	/src/project/libsixel_project/libsixel	converters/img2sixel	@@
+/src/project/jasper_project/CVE-2021-26926	/src/project/jasper_project/jasper	Build/src/appl/jasper	-f @@ --output-format jpg
+/src/project/jasper_project/CVE-2021-3272	/src/project/jasper_project/jasper	Build/src/appl/jasper	--input @@ --output test.jp2
+/src/project/jasper_project/CVE-2020-27828	/src/project/jasper_project/jasper	Build/src/appl/jasper	--input @@ --output /dev/null --output-format jpc -O numrlvls=40
+/src/project/jasper_project/CVE-2018-19543	/src/project/jasper_project/jasper	Build/src/appl/jasper	--input @@ --input-format jp2 --output /dev/null --output-format bmp
+/src/project/jasper_project/CVE-2018-19540	/src/project/jasper_project/jasper	Build/src/appl/jasper	--input @@ --input-format jp2 --output /dev/null --output-format bmp
+/src/project/libsndfile_project/CVE-2021-3246	/src/project/libsndfile_project/libsndfile	programs/sndfile-info	--cart @@
+/src/project/nasm_project/CVE-2020-24241	/src/project/nasm_project/nasm	nasm	-f win64 -o tmp.o @@
+/src/project/fig2dev_project/CVE-2020-21676	/src/project/fig2dev_project/fig2dev	fig2dev/fig2dev	-L pstricks @@
+/src/project/fig2dev_project/CVE-2020-21675	/src/project/fig2dev_project/fig2dev	fig2dev/fig2dev	-L ptk @@
+/src/project/libtiff_project/issue-278	/src/project/libtiff_project/libtiff	tools/tiffcp	-i -s -p separate @@ /dev/null
+/src/project/libtiff_project/issue-277	/src/project/libtiff_project/libtiff	tools/tiffcp	@@ /dev/null
+/src/project/libtiff_project/issue-275	/src/project/libtiff_project/libtiff	tools/tiffcrop	-i @@ /dev/null
+/src/project/libtiff_project/issue-269	/src/project/libtiff_project/libtiff	tools/tiffcrop	-i @@ /dev/null
+/src/project/libtiff_project/CVE-2016-10272	/src/project/libtiff_project/libtiff	tools/tiffcrop	-i @@ /dev/null
+/src/project/libtiff_project/CVE-2016-10092	/src/project/libtiff_project/libtiff	tools/tiffcrop	-i @@ /dev/null
+/src/project/libtiff_project/CVE-2016-9273	/src/project/libtiff_project/libtiff	tools/tiffsplit	@@
+/src/project/libtiff_project/CVE-2016-9532	/src/project/libtiff_project/libtiff	tools/tiffcrop	@@ test
