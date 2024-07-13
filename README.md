@@ -83,6 +83,6 @@ Quickly Reproduce:
   python paper_result.py
   ```
 
-  The result is save in `$SLEUTH_PATH/Experiment/result`. Each result corresponds to the figures in the paper, please refer to the previous section [Description.md](src/script/description.md). Experiment corresponding to Table 5 involved extensive manual analysis, so we are not including it in the automated script.
+  The result is save in `$SLEUTH_PATH/Experiment/result`. Each result corresponds to the figures in the paper, please refer to the previous section [description.md](src/script/Description.md). Experiment corresponding to Table 5 involved extensive manual analysis, so we are not including it in the automated script.
 
 If you want to manually run all the experimental processes, please refer to [script/README_COMP.md](src/script/README_COMP.md) and [script/README_PATCH.md](src/script/README_PATCH.md).
