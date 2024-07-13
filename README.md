@@ -10,7 +10,7 @@ The current version still has some cumbersome user interactions. We will optimiz
 
 ##### Docker Container
 
-We recommend using docker to quickly set up Sleuth's usage environment. We provide a docker container which can be downloaded from [Docker Hub]([The World’s Largest Container Registry | Docker](https://www.docker.com/products/docker-hub/)). Please note that the size of our docker container the dataset is about `12GB`, so please prepare sufficient disk space.
+We recommend using docker to quickly set up Sleuth's usage environment. We provide a docker container which can be downloaded from Docker Hub. Please note that the size of our docker container the dataset is about `12GB`, so please prepare sufficient disk space.
 
 ```bash
 docker pull xingkongwhl/sleuth:latest
@@ -60,7 +60,7 @@ We integrated the benchmark build commands into the automated scripts. If you wa
 
 ### Detailed Description
 
-We list the source code structure at [description.md](src/script/description.md), you can get a more detailed description of each component.
+We list the source code structure at [description.md](src/script/Description.md), you can get a more detailed description of each component.
 
 ### How to reproduce the results of our paper
 
