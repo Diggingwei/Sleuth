@@ -140,7 +140,7 @@ KHASH_MAP_INIT_INT64(m64HashTable, unsigned int)   // instantiate structs and me
 #endif
 
 #define MAX_CAPABILITY_NUM 10000  /* How many different capability we can have at most */
-#define MAX_POSITION_NUM 1000     /* How many different position we can have at most*/
+#define MAX_POSITION_NUM 10000     /* How many different position we can have at most*/
 #define MAX_MUTATE_NUM 2000      /* How many bytes we can mutate at one time */
 #define UNION_TRIM_START_STEPS 8
 #define MAX_UNION_NUM 20000       /* How many different union we can have at most */

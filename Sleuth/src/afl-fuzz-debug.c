@@ -133,12 +133,13 @@ void write_log(afl_state_t *afl, u8 new_cap_idx, u8 new_pos_idx, u8 exploration_
     }
 
     u64 current_ms = get_cur_time() - afl->start_time;
+    u64 last_ms = afl->last_check_time - afl->start_time;
 
     afl->last_log_time = get_cur_time();
 
     fprintf(afl->switch_debug_fd, "[%02lld:%02lld:%02lld] now the new_cap is %d, now the new_pos is %d, the switch is %d, now the new cap hash is %u, now the new pos hash is %u, the current exec time is %d, the last check time is %d, the current switch time is %d, the last switch time is %d, the all switch number is %d, the all position number is %d\n",
             current_ms /1000 /3600, (current_ms /1000 /60) % 60, (current_ms / 1000) % 60,
-            new_cap_idx, new_pos_idx, exploration_state, now_cap_hash, now_pos_hash, afl->fsrv.total_execs, afl->last_check_exec, get_cur_time(), afl->last_check_time, switch_num, pos_num);
+            new_cap_idx, new_pos_idx, exploration_state, now_cap_hash, now_pos_hash, afl->fsrv.total_execs, afl->last_check_exec, current_ms, last_ms, switch_num, pos_num);
 
 }
 

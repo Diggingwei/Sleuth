@@ -895,7 +895,7 @@ void pos_cull_queue(afl_state_t *afl) {
 
     for (u32 j = 0; j < fuzzed_pos_cnt_ori; j++){
 
-      if (q->position_hash == fuzzed_pos[i]){
+      if (q->position_hash == fuzzed_pos[j]){
 
         is_fuzzed = 1;
 
@@ -1047,12 +1047,12 @@ void cull_queue(afl_state_t *afl) {
       afl->new_cap = 0;
     }else {
     	if (afl->fsrv.total_execs - afl->last_check_exec >= MINIMAL_SWITCH_EXEC){
-		afl->last_check_exec = afl->fsrv.total_execs;
-		afl->new_cap = 0;
-	}
-	if (get_cur_time() - afl->last_check_time >= MAXIUM_SWITCH_TIME){
-		afl->last_check_time = get_cur_time();
-	}
+        afl->last_check_exec = afl->fsrv.total_execs;
+        afl->new_cap = 0;
+      }
+      if (get_cur_time() - afl->last_check_time >= MAXIUM_SWITCH_TIME){
+        afl->last_check_time = get_cur_time();
+      }
     }
 
   }else {
